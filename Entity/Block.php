@@ -252,4 +252,21 @@ class Block
     {
         return $this->updated_at;
     }
+
+    public function toArray()
+    {
+        $array = array();
+        $array['id'] = $this->getId();
+        $array['name'] = $this->getName();
+        $array['type'] = $this->getType();
+        $array['is_enabled'] = $this->getIsEnabled();
+        $array['theme'] = $this->getTheme();
+
+        foreach(json_decode($this->getConfiguration()) as $identifier => $value)
+        {
+            $array[$identifier] = $value;
+        }
+
+        return $array;
+    }
 }
