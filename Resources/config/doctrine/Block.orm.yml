@@ -1,0 +1,46 @@
+Zorbus\BlockBundle\Entity\Block:
+    type: entity
+    table: zorbus_block_block
+    repositoryClass: Zorbus\BlockBundle\Entity\BlockRepository
+    id:
+        id:
+            type: integer
+            generator: { strategy: AUTO }
+    fields:
+        name:
+            type: string
+            length: 255
+            nullable: false
+        type:
+            type: string
+            length: 255
+            nullable: false
+        configuration:
+            type: string
+            length: 255
+            default: {}
+            nullable: true
+        theme:
+            type: string
+            length: 255
+            default: layout
+            nullable: true
+        lang:
+            type: string
+            length: 5
+            default: en_US
+            nullable: true
+        is_enabled:
+            type: boolean
+            default: true
+            nullable: true
+        created_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updated_at:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update

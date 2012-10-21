@@ -1,0 +1,11 @@
+parameters:
+    zorbus.block.service.class.text: Zorbus\BlockBundle\Model\BlockTextConfig
+    zorbus.block.service.class.rss: Zorbus\BlockBundle\Model\BlockRssConfig
+
+services:
+    zorbus.block.config.text:
+        class: %zorbus.block.service.class.text%
+        arguments: ['@form.factory']
+    zorbus.block.config.rss:
+        class: %zorbus.block.service.class.rss%
+        arguments: ['@form.factory']
