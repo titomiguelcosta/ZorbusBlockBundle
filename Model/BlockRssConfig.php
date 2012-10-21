@@ -28,7 +28,7 @@ class BlockRssConfig extends BlockConfig
                 )))
                 ->add('lang', 'text')
                 ->add('name', 'text')
-                ->add('is_enabled', 'checkbox');
+                ->add('is_enabled', 'checkbox', array('required' => false));
     }
     public function getBlockEntity(array $data, Block $block = null)
     {
