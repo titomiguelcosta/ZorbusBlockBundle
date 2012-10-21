@@ -261,6 +261,7 @@ class Block
         $array['type'] = $this->getType();
         $array['is_enabled'] = $this->getIsEnabled();
         $array['theme'] = $this->getTheme();
+        $array['lang'] = $this->getLang();
 
         foreach(json_decode($this->getConfiguration()) as $identifier => $value)
         {
