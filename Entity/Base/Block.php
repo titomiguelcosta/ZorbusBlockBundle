@@ -15,18 +15,13 @@ abstract class Block
         return $this->getName();
     }
 
-    public function isEnabled()
-    {
-        return $this->enabled;
-    }
-
     public function toArray()
     {
         $array = array();
         $array['id'] = $this->getId();
         $array['name'] = $this->getName();
         $array['type'] = $this->getType();
-        $array['enabled'] = $this->isEnabled();
+        $array['enabled'] = $this->getIsEnabled();
         $array['theme'] = $this->getTheme();
         $array['lang'] = $this->getLang();
 
