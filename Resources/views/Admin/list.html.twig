@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_list.html.twig' %}
+
+{% block actions %}
+    <div class="sonata-actions">
+        <div class="btn-group">
+            <a class="btn" href="{{ admin.generateUrl('zorbus_block_config', {'type': 'text'}) }}">Add new Text</a>
+            <a class="btn" href="{{ admin.generateUrl('zorbus_block_config', {'type': 'rss'}) }}">Add new RSS</a>
+        </div>
+    </div>
+{% endblock %}

@@ -3,7 +3,7 @@ parameters:
 
     zorbus_block.block.entity.class: Zorbus\BlockBundle\Entity\Block
 
-    zorbus_block.block.controller.class: SonataAdminBundle:CRUD
+    zorbus_block.block.controller.class: ZorbusBlockBundle:Admin\Block
 
     zorbus.block.service.class.text: Zorbus\BlockBundle\Model\BlockTextConfig
     zorbus.block.service.class.rss: Zorbus\BlockBundle\Model\BlockRssConfig

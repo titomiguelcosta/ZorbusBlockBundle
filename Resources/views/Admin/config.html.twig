@@ -1,0 +1,42 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+    <form class="form-horizontal" method="post" action="{{ admin.generateUrl('zorbus_block_config', {'type': app.request.get('type')}) }}">
+            {% if form.vars.errors|length > 0 %}
+                <div class="sonata-ba-form-error">
+                    {{ form_errors(form) }}
+                </div>
+            {% endif %}
+
+            {% block sonata_pre_fieldsets %}{% endblock %}
+
+            <fieldset>
+                <legend>
+                    {{ 'Create'|trans({}, admin.translationdomain) }}
+                </legend>
+
+                <div class="sonata-ba-collapsed-fields">
+                    {% for field_name in form %}
+                        {% if "_token" != field_name.name %}
+                        <div class="control-group">
+                            {{ form_label(field_name)}}
+                            <div class="controls">
+                                {{ form_widget(field_name)}}
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </fieldset>
+
+            {% block sonata_post_fieldsets %}{% endblock %}
+
+            {{ form_rest(form) }}
+
+            {% block formactions %}
+                <div class="well form-actions">
+                    <input class="btn btn-primary" type="submit" name="btn_create_and_edit" value="{{ 'btn_create_and_edit_again'|trans({}, 'SonataAdminBundle') }}"/>
+                </div>
+            {% endblock formactions %}
+        </form>
+{% endblock %}
