@@ -1,8 +1,21 @@
 parameters:
+    zorbus_block.block.admin.class: Zorbus\BlockBundle\Admin\BlockAdmin
+
+    zorbus_block.block.entity.class: Zorbus\BlockBundle\Entity\Block
+
+    zorbus_block.block.controller.class: SonataAdminBundle:CRUD
+
     zorbus.block.service.class.text: Zorbus\BlockBundle\Model\BlockTextConfig
     zorbus.block.service.class.rss: Zorbus\BlockBundle\Model\BlockRssConfig
 
 services:
+    sonata.admin.block.block:
+        class: %zorbus_block.block.admin.class%
+        arguments: [~, %zorbus_block.block.entity.class%, %zorbus_block.block.controller.class%]
+        calls:
+            - [setTranslationDomain, [BlockBundle]]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Pages, label: Blocks }
     zorbus.block.config.text:
         class: %zorbus.block.service.class.text%
         arguments: ['@form.factory']
