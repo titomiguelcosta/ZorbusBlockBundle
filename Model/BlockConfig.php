@@ -60,7 +60,7 @@ abstract class BlockConfig {
     public function getModel(Block $block)
     {
         $model = new BlockModel();
-        $settings = (array) json_decode($block->getConfiguration());
+        $settings = (array) json_decode($block->getParameters());
         $model->setSettings($settings);
 
         return $model;

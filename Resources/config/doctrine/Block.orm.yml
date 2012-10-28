@@ -15,22 +15,21 @@ Zorbus\BlockBundle\Entity\Block:
             type: string
             length: 255
             nullable: false
-        configuration:
-            type: string
-            length: 255
+        parameters:
+            type: text
             default: {}
             nullable: true
         theme:
             type: string
             length: 255
-            default: layout
+            default: default
             nullable: true
         lang:
             type: string
             length: 5
             default: en_US
             nullable: true
-        is_enabled:
+        enabled:
             type: boolean
             default: true
             nullable: true

@@ -7,12 +7,8 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Zorbus\BlockBundle\Entity\Block
  */
-class Block
+class Block extends Base\Block
 {
-    public function __toString()
-    {
-        return $this->getName();
-    }
     /**
      * @var integer $id
      */
@@ -29,9 +25,9 @@ class Block
     private $type;
 
     /**
-     * @var string $configuration
+     * @var string $parameters
      */
-    private $configuration;
+    private $parameters;
 
     /**
      * @var string $theme
@@ -44,9 +40,9 @@ class Block
     private $lang;
 
     /**
-     * @var boolean $is_enabled
+     * @var boolean $enabled
      */
-    private $is_enabled;
+    private $enabled;
 
     /**
      * @var \DateTime $created_at
@@ -62,7 +58,7 @@ class Block
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -78,14 +74,14 @@ class Block
     public function setName($name)
     {
         $this->name = $name;
-
+    
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string
+     * @return string 
      */
     public function getName()
     {
@@ -101,14 +97,14 @@ class Block
     public function setType($type)
     {
         $this->type = $type;
-
+    
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string
+     * @return string 
      */
     public function getType()
     {
@@ -116,26 +112,26 @@ class Block
     }
 
     /**
-     * Set configuration
+     * Set parameters
      *
-     * @param string $configuration
+     * @param string $parameters
      * @return Block
      */
-    public function setConfiguration($configuration)
+    public function setParameters($parameters)
     {
-        $this->configuration = $configuration;
-
+        $this->parameters = $parameters;
+    
         return $this;
     }
 
     /**
-     * Get configuration
+     * Get parameters
      *
-     * @return string
+     * @return string 
      */
-    public function getConfiguration()
+    public function getParameters()
     {
-        return $this->configuration;
+        return $this->parameters;
     }
 
     /**
@@ -147,14 +143,14 @@ class Block
     public function setTheme($theme)
     {
         $this->theme = $theme;
-
+    
         return $this;
     }
 
     /**
      * Get theme
      *
-     * @return string
+     * @return string 
      */
     public function getTheme()
     {
@@ -170,14 +166,14 @@ class Block
     public function setLang($lang)
     {
         $this->lang = $lang;
-
+    
         return $this;
     }
 
     /**
      * Get lang
      *
-     * @return string
+     * @return string 
      */
     public function getLang()
     {
@@ -185,26 +181,26 @@ class Block
     }
 
     /**
-     * Set is_enabled
+     * Set enabled
      *
-     * @param boolean $isEnabled
+     * @param boolean $enabled
      * @return Block
      */
-    public function setIsEnabled($isEnabled)
+    public function setEnabled($enabled)
     {
-        $this->is_enabled = $isEnabled;
-
+        $this->enabled = $enabled;
+    
         return $this;
     }
 
     /**
-     * Get is_enabled
+     * Get enabled
      *
-     * @return boolean
+     * @return boolean 
      */
-    public function getIsEnabled()
+    public function getEnabled()
     {
-        return $this->is_enabled;
+        return $this->enabled;
     }
 
     /**
@@ -216,14 +212,14 @@ class Block
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-
+    
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getCreatedAt()
     {
@@ -239,35 +235,17 @@ class Block
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-
+    
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getUpdatedAt()
     {
         return $this->updated_at;
-    }
-
-    public function toArray()
-    {
-        $array = array();
-        $array['id'] = $this->getId();
-        $array['name'] = $this->getName();
-        $array['type'] = $this->getType();
-        $array['is_enabled'] = $this->getIsEnabled();
-        $array['theme'] = $this->getTheme();
-        $array['lang'] = $this->getLang();
-
-        foreach(json_decode($this->getConfiguration()) as $identifier => $value)
-        {
-            $array[$identifier] = $value;
-        }
-
-        return $array;
     }
 }

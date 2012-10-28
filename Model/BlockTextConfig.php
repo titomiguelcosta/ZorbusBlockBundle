@@ -27,15 +27,15 @@ class BlockTextConfig extends BlockConfig
                 )))
                 ->add('lang', 'text')
                 ->add('name', 'text')
-                ->add('is_enabled', 'checkbox');
+                ->add('enabled', 'checkbox');
     }
     public function getBlockEntity(array $data, Block $block = null)
     {
         $block = null === $block ? new Block() : $block;
 
         $block->setType('text');
-        $block->setConfiguration(json_encode(array('title' => $data['title'], 'content' => $data['content'])));
-        $block->setIsEnabled((boolean) $data['is_enabled']);
+        $block->setParameters(json_encode(array('title' => $data['title'], 'content' => $data['content'])));
+        $block->setEnabled((boolean) $data['enabled']);
         $block->setLang($data['lang']);
         $block->setName($data['name']);
 

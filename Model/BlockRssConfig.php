@@ -28,15 +28,15 @@ class BlockRssConfig extends BlockConfig
                 )))
                 ->add('lang', 'text')
                 ->add('name', 'text')
-                ->add('is_enabled', 'checkbox', array('required' => false));
+                ->add('enabled', 'checkbox', array('required' => false));
     }
     public function getBlockEntity(array $data, Block $block = null)
     {
         $block = null === $block ? new Block() : $block;
 
         $block->setType('rss');
-        $block->setConfiguration(json_encode(array('title' => $data['title'], 'url' => $data['url'])));
-        $block->setIsEnabled((boolean) $data['is_enabled']);
+        $block->setParameters(json_encode(array('title' => $data['title'], 'url' => $data['url'])));
+        $block->setEnabled((boolean) $data['enabled']);
         $block->setLang($data['lang']);
         $block->setName($data['name']);
 
