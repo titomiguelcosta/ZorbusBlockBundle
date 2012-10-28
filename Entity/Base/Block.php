@@ -9,9 +9,15 @@ use Doctrine\ORM\Mapping as ORM;
  */
 abstract class Block
 {
+
     public function __toString()
     {
         return $this->getName();
+    }
+
+    public function isEnabled()
+    {
+        return $this->enabled;
     }
 
     public function toArray()
@@ -24,11 +30,12 @@ abstract class Block
         $array['theme'] = $this->getTheme();
         $array['lang'] = $this->getLang();
 
-        foreach(json_decode($this->getParameters()) as $identifier => $value)
+        foreach (json_decode($this->getParameters()) as $identifier => $value)
         {
             $array[$identifier] = $value;
         }
 
         return $array;
     }
+
 }
