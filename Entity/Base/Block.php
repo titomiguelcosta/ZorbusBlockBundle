@@ -21,7 +21,7 @@ abstract class Block
         $array['id'] = $this->getId();
         $array['name'] = $this->getName();
         $array['type'] = $this->getType();
-        $array['enabled'] = $this->getIsEnabled();
+        $array['enabled'] = $this->getEnabled();
         $array['theme'] = $this->getTheme();
         $array['lang'] = $this->getLang();
 
