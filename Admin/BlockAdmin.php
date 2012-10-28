@@ -56,7 +56,7 @@ class BlockAdmin extends Admin
     }
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('zorbus_block_config', 'config/{type}', array('_controller' => 'ZorbusBlockBundle:Admin:configBlock'));
-        $collection->add('zorbus_block_show', 'config/{id}/show', array('_controller' => 'ZorbusBlockBundle:Admin:showBlock'));
+        $collection->add('zorbus_block_config', 'config/{type}', array('_controller' => 'ZorbusBlockBundle:Admin\Block:configBlock'));
+        $collection->add('zorbus_block_show', 'config/{id}/show', array('_controller' => 'ZorbusBlockBundle:Admin\Block:showBlock'));
     }
 }
