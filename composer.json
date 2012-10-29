@@ -18,7 +18,8 @@
         "symfony/framework-bundle": ">=2.1,<2.2-dev",
         "stof/doctrine-extensions-bundle": "*",
         "doctrine/doctrine-bundle": "*",
-        "sonata-project/block-bundle": "*"
+        "sonata-project/block-bundle": "*",
+        "sonata-project/admin-bundle": "*"
     },
     "suggest": {
         "twig/twig": "Great template language",

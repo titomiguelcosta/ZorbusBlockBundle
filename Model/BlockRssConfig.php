@@ -32,7 +32,7 @@ class BlockRssConfig extends BlockConfig
                         new Assert\NotBlank(),
                         new Assert\Url()
                         )))
-                ->add('lang', 'text')
+                ->add('lang', 'text', array('required' => false))
                 ->add('name', 'text')
                 ->add('enabled', 'checkbox', array('required' => false))
                 ->end();

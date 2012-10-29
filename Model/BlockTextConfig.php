@@ -26,17 +26,15 @@ class BlockTextConfig extends BlockConfig
         $formMapper->add('title', 'text', array('constraints' => array(
                         new Assert\NotBlank()
                         )))
-                ->add('content', 'textarea', array('constraints' => array(
+                ->add('content', 'textarea', array(
+                    'attr' => array('class' => 'ckeditor'),
+                    'constraints' => array(
                         new Assert\NotBlank()
                         )))
                 ->add('lang', 'text')
                 ->add('theme', 'choice', array('choices' => $this->getThemes()))
                 ->add('name', 'text')
                 ->add('enabled', 'checkbox', array('required' => false));
-        foreach ($this->admin->getExtensions() as $extension) {
-            $extension->configureFormFields($formMapper);
-            die("aaaa");
-        }
 
         return $formMapper->getFormBuilder();
     }
