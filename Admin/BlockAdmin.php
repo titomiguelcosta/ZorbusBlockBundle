@@ -17,6 +17,7 @@ class BlockAdmin extends Admin
     {
         $formMapper
                 ->add('name')
+                ->add('parameters')
                 ->add('enabled', null, array('required' => false))
         ;
     }

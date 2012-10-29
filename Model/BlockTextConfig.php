@@ -3,16 +3,18 @@
 namespace Zorbus\BlockBundle\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Form\FormFactory;
 use Zorbus\BlockBundle\Entity\Block as BlockEntity;
 use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
+use Sonata\AdminBundle\Form\FormMapper;
+use Sonata\AdminBundle\Admin\AdminInterface;
+use Symfony\Component\Form\FormFactory;
 
 class BlockTextConfig extends BlockConfig
 {
 
-    public function __construct(FormFactory $formFactory, TimedTwigEngine $template)
+    public function __construct(AdminInterface $admin, TimedTwigEngine $template, FormFactory $formFactory)
     {
-        parent::__construct('zorbus_block.service.text', 'Text Feed Block', $formFactory);
+        parent::__construct('zorbus_block.service.text', 'Text Feed Block', $admin, $formFactory);
         $this->enabled = true;
         $this->themes = array();
         $this->template = $template;
@@ -20,18 +22,23 @@ class BlockTextConfig extends BlockConfig
 
     public function getFormBuilder()
     {
-        $formFactory = $this->getFormFactory();
-        return $formFactory->createBuilder()
-                        ->add('title', 'text', array('constraints' => array(
-                                new Assert\NotBlank()
-                                )))
-                        ->add('content', 'textarea', array('constraints' => array(
-                                new Assert\NotBlank()
-                                )))
-                        ->add('lang', 'text')
-                        ->add('theme', 'choice', array('choices' => $this->getThemes()))
-                        ->add('name', 'text')
-                        ->add('enabled', 'checkbox', array('required' => false));
+        $formMapper = new FormMapper($this->admin->getFormContractor(), $this->formBuilder, $this->admin);
+        $formMapper->add('title', 'text', array('constraints' => array(
+                        new Assert\NotBlank()
+                        )))
+                ->add('content', 'textarea', array('constraints' => array(
+                        new Assert\NotBlank()
+                        )))
+                ->add('lang', 'text')
+                ->add('theme', 'choice', array('choices' => $this->getThemes()))
+                ->add('name', 'text')
+                ->add('enabled', 'checkbox', array('required' => false));
+        foreach ($this->admin->getExtensions() as $extension) {
+            $extension->configureFormFields($formMapper);
+            die("aaaa");
+        }
+
+        return $formMapper->getFormBuilder();
     }
 
     public function getBlockEntity(array $data, BlockEntity $block = null)

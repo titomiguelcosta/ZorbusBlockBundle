@@ -4,9 +4,14 @@ namespace Zorbus\BlockBundle\Controller\Admin;
 
 use Symfony\Component\HttpFoundation\Request;
 use Sonata\AdminBundle\Controller\CRUDController;
+use Zorbus\BlockBundle\Entity\Block as BlockEntity;
 
 class BlockController extends CRUDController
 {
+    public function createAction()
+    {
+        return $this->redirect($this->admin->generateUrl('zorbus_block_models_list'));
+    }
     public function listModelsAction()
     {
         $compiler = $this->get('zorbus_block.compiler.config');
@@ -28,7 +33,7 @@ class BlockController extends CRUDController
             if ($form->isValid())
             {
                 $block = $config->getBlockEntity($form->getData());
-                $em = $this->getDoctrine()->getEntityManager();
+                $em = $this->getDoctrine()->getManager();
                 $em->persist($block);
                 $em->flush();
 
@@ -39,7 +44,12 @@ class BlockController extends CRUDController
 
         $this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
 
-        return $this->render('ZorbusBlockBundle:Admin:config.html.twig', array('form' => $view, 'object' => $this->admin->getNewInstance()));
+        //return $this->render('ZorbusBlockBundle:Admin:config.html.twig', array('form' => $view, 'object' => $this->admin->getNewInstance()));
+        return $this->render($this->admin->getTemplate('edit'), array(
+            'action' => 'create',
+            'form'   => $view,
+            'object' => new BlockEntity(),
+        ));
     }
     public function showAction($id = null)
     {
@@ -132,7 +142,7 @@ class BlockController extends CRUDController
         $view = $form->createView();
 
         // set the theme for the current Admin Form
-        //$this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
+        $this->get('twig')->getExtension('form')->renderer->setTheme($view, $this->admin->getFormTheme());
 
         return $this->render($this->admin->getTemplate($templateKey), array(
             'action' => 'edit',
