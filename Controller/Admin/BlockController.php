@@ -7,13 +7,19 @@ use Sonata\AdminBundle\Controller\CRUDController;
 
 class BlockController extends CRUDController
 {
-    public function configBlockAction($type, Request $request)
+    public function listModelsAction()
+    {
+        $compiler = $this->get('zorbus_block.compiler.config');
+
+        return $this->render('ZorbusBlockBundle:Admin:models.html.twig', array('models' => $compiler->getModels()));
+    }
+    public function configBlockAction($service, Request $request)
     {
         if (false === $this->admin->isGranted('CREATE')) {
             throw new AccessDeniedException();
         }
 
-        $config = $this->get(sprintf('zorbus.block.config.%s', $type));
+        $config = $this->get($service);
         $form = $config->getFormBuilder()->getForm();
 
         if ($request->isMethod('POST')){
@@ -51,15 +57,14 @@ class BlockController extends CRUDController
 
         $this->admin->setSubject($object);
 
-        $config = $this->get(sprintf('zorbus.block.config.%s', $object->getType()));
-        $service = $this->get(sprintf('sonata.block.service.%s', $object->getType()));
-        $output = $service->execute($config->getModel($object))->getContent();
+        $config = $this->get($object->getService());
+        $output = $config->render($object);
 
         return $this->render('ZorbusBlockBundle:Admin:show.html.twig', array(
             'action'   => 'show',
             'object'   => $object,
             'elements' => $this->admin->getShow(),
-            'output'   => $output
+            'output'   => $output->getContent()
         ));
     }
     public function editAction($id = null)
@@ -86,7 +91,7 @@ class BlockController extends CRUDController
         /******
          * Rewrite
          */
-        $config = $this->get(sprintf('zorbus.block.config.%s', $object->getType()));
+        $config = $this->get($object->getService());
         $form = $config->getFormBuilder()->getForm();
 
         $form->setData($object->toArray());

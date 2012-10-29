@@ -1,0 +1,19 @@
+{% extends 'SonataAdminBundle::standard_layout.html.twig' %}
+
+{% block sonata_admin_content %}
+    <div class="row-fluid">
+        <span></span>
+        {% for category, blocks in models %}
+        <fieldset>
+            <legend>{{ category }}</legend>
+            <br />
+            {% for model in blocks %}
+                <span class="span2 well"><a href="{{ admin.generateUrl('zorbus_block_config', {'service': model.service}) }}">{{ model }}</a></span>
+            {% endfor %}
+        </fieldset>
+
+        {% else %}
+            <div class="alert alert-error">No models.</div>
+        {% endfor %}
+    </div>
+{% endblock %}

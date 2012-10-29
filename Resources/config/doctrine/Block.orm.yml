@@ -11,7 +11,7 @@ Zorbus\BlockBundle\Entity\Block:
             type: string
             length: 255
             nullable: false
-        type:
+        service:
             type: string
             length: 255
             nullable: false

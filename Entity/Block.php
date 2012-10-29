@@ -22,7 +22,7 @@ class Block extends Base\Block
     /**
      * @var string $type
      */
-    private $type;
+    private $service;
 
     /**
      * @var string $parameters
@@ -58,7 +58,7 @@ class Block extends Base\Block
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -74,14 +74,14 @@ class Block extends Base\Block
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
     /**
      * Get name
      *
-     * @return string 
+     * @return string
      */
     public function getName()
     {
@@ -94,21 +94,21 @@ class Block extends Base\Block
      * @param string $type
      * @return Block
      */
-    public function setType($type)
+    public function setService($service)
     {
-        $this->type = $type;
-    
+        $this->service = $service;
+
         return $this;
     }
 
     /**
      * Get type
      *
-     * @return string 
+     * @return string
      */
-    public function getType()
+    public function getService()
     {
-        return $this->type;
+        return $this->service;
     }
 
     /**
@@ -120,14 +120,14 @@ class Block extends Base\Block
     public function setParameters($parameters)
     {
         $this->parameters = $parameters;
-    
+
         return $this;
     }
 
     /**
      * Get parameters
      *
-     * @return string 
+     * @return string
      */
     public function getParameters()
     {
@@ -143,14 +143,14 @@ class Block extends Base\Block
     public function setTheme($theme)
     {
         $this->theme = $theme;
-    
+
         return $this;
     }
 
     /**
      * Get theme
      *
-     * @return string 
+     * @return string
      */
     public function getTheme()
     {
@@ -166,14 +166,14 @@ class Block extends Base\Block
     public function setLang($lang)
     {
         $this->lang = $lang;
-    
+
         return $this;
     }
 
     /**
      * Get lang
      *
-     * @return string 
+     * @return string
      */
     public function getLang()
     {
@@ -189,14 +189,14 @@ class Block extends Base\Block
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-    
+
         return $this;
     }
 
     /**
      * Get enabled
      *
-     * @return boolean 
+     * @return boolean
      */
     public function getEnabled()
     {
@@ -212,14 +212,14 @@ class Block extends Base\Block
     public function setCreatedAt($createdAt)
     {
         $this->created_at = $createdAt;
-    
+
         return $this;
     }
 
     /**
      * Get created_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreatedAt()
     {
@@ -235,14 +235,14 @@ class Block extends Base\Block
     public function setUpdatedAt($updatedAt)
     {
         $this->updated_at = $updatedAt;
-    
+
         return $this;
     }
 
     /**
      * Get updated_at
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdatedAt()
     {

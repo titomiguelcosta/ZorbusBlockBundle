@@ -1,7 +1,7 @@
 {% extends 'SonataAdminBundle::standard_layout.html.twig' %}
 
 {% block sonata_admin_content %}
-    <form class="form-horizontal" method="post" action="{{ admin.generateUrl('zorbus_block_config', {'type': app.request.get('type')}) }}">
+    <form class="form-horizontal" method="post" action="{{ admin.generateUrl('zorbus_block_config', {'service': app.request.get('service')}) }}">
             {% if form.vars.errors|length > 0 %}
                 <div class="sonata-ba-form-error">
                     {{ form_errors(form) }}
@@ -40,3 +40,4 @@
             {% endblock formactions %}
         </form>
 {% endblock %}
+

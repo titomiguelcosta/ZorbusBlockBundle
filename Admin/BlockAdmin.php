@@ -1,4 +1,5 @@
 <?php
+
 namespace Zorbus\BlockBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
@@ -11,27 +12,28 @@ use Sonata\AdminBundle\Route\RouteCollection;
 
 class BlockAdmin extends Admin
 {
+
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('name')
-            ->add('enabled', null, array('required' => false))
+                ->add('name')
+                ->add('enabled', null, array('required' => false))
         ;
     }
 
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('name')
+                ->add('name')
         ;
     }
 
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('name')
-            ->add('type')
-            ->add('enabled')
+                ->addIdentifier('name')
+                ->add('service')
+                ->add('enabled')
         ;
     }
 
@@ -40,8 +42,8 @@ class BlockAdmin extends Admin
         $filter
                 ->add('name')
                 ->add('title')
-                ->add('type')
-                ->add('configuration')
+                ->add('service')
+                ->add('parameters')
                 ->add('enabled')
         ;
     }
@@ -49,14 +51,17 @@ class BlockAdmin extends Admin
     public function validate(ErrorElement $errorElement, $object)
     {
         $errorElement
-            ->with('name')
+                ->with('name')
                 ->assertMaxLength(array('limit' => 255))
-            ->end()
+                ->end()
         ;
     }
+
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->add('zorbus_block_config', 'config/{type}', array('_controller' => 'ZorbusBlockBundle:Admin\Block:configBlock'));
+        $collection->add('zorbus_block_config', 'config/{service}', array('_controller' => 'ZorbusBlockBundle:Admin\Block:configBlock'));
         $collection->add('zorbus_block_show', 'config/{id}/show', array('_controller' => 'ZorbusBlockBundle:Admin\Block:showBlock'));
+        $collection->add('zorbus_block_models_list', 'models/list', array('_controller' => 'ZorbusBlockBundle:Admin\Block:listModels'));
     }
+
 }

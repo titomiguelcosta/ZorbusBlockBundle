@@ -1,12 +1,13 @@
 <?php
 namespace Zorbus\BlockBundle\Model;
 use Symfony\Component\Form\FormFactory;
-use Zorbus\BlockBundle\Entity\Block;
+use Zorbus\BlockBundle\Entity\Block as BlockEntity;
 use Sonata\BlockBundle\Model\Block as BlockModel;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class BlockConfig {
     protected $enabled = true;
-    protected $type;
+    protected $service;
     protected $name = null;
     protected $themes = array();
     protected $formFactory;
@@ -15,10 +16,10 @@ abstract class BlockConfig {
     {
         return $this->getName();
     }
-    public function __construct($type, $name = null, FormFactory $formFactory = null)
+    public function __construct($service, $name = null, FormFactory $formFactory = null)
     {
-        $this->type = $type;
-        $this->name = $name === null ? $type : $name;
+        $this->service = $service;
+        $this->name = $name === null ? $service : $name;
         $this->formFactory = $formFactory;
     }
     public function getThemes()
@@ -29,9 +30,9 @@ abstract class BlockConfig {
     {
         $this->themes[$identifier] = $name;
     }
-    public function getType()
+    public function getService()
     {
-        return $this->type;
+        return $this->service;
     }
     public function getName()
     {
@@ -57,7 +58,7 @@ abstract class BlockConfig {
     {
         return $this->formFactory;
     }
-    public function getModel(Block $block)
+    public function getModel(BlockEntity $block)
     {
         $model = new BlockModel();
         $settings = (array) json_decode($block->getParameters());
@@ -66,5 +67,20 @@ abstract class BlockConfig {
         return $model;
     }
     abstract public function getFormBuilder();
-    abstract public function getBlockEntity(array $data, Block $block = null);
+    abstract public function getBlockEntity(array $data, BlockEntity $block = null);
+    /**
+     *
+     * @param \Zorbus\BlockBundle\Entity\Block $block
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \InvalidArgumentException
+     */
+    public function render(BlockEntity $block)
+    {
+        if ($block->getService() != $this->getService())
+        {
+            throw new \InvalidArgumentException('Block service not supported');
+        }
+
+        return new Response('Empty block.');
+    }
 }

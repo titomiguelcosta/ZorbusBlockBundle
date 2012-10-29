@@ -1,0 +1,11 @@
+<div class="well">
+    <h2>{{ parameters.title }}</h2>
+    {% for feed in feeds %}
+        <div>
+            <strong><a href="{{ feed.link}}" rel="nofollow" title="{{ feed.title }}">{{ feed.title }}</a></strong>
+            <div>{{ feed.description|raw }}</div>
+        </div>
+    {% else %}
+        No feeds available.
+    {% endfor %}
+</div>

@@ -20,7 +20,7 @@ abstract class Block
         $array = array();
         $array['id'] = $this->getId();
         $array['name'] = $this->getName();
-        $array['type'] = $this->getType();
+        $array['service'] = $this->getService();
         $array['enabled'] = $this->getEnabled();
         $array['theme'] = $this->getTheme();
         $array['lang'] = $this->getLang();
