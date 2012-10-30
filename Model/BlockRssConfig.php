@@ -5,7 +5,6 @@ namespace Zorbus\BlockBundle\Model;
 use Symfony\Component\Validator\Constraints as Assert;
 use Zorbus\BlockBundle\Entity\Block as BlockEntity;
 use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Symfony\Component\Form\FormFactory;
 
@@ -20,10 +19,9 @@ class BlockRssConfig extends BlockConfig
         $this->template = $template;
     }
 
-    public function getFormBuilder()
+    public function getFormMapper()
     {
-        $formMapper = new FormMapper($this->admin->getFormContractor(), $this->formBuilder, $this->admin);
-        $formMapper
+        return $this->formMapper
                 ->with('Rss Feed Block')
                 ->add('title', 'text', array('constraints' => array(
                         new Assert\NotBlank()
@@ -36,8 +34,6 @@ class BlockRssConfig extends BlockConfig
                 ->add('name', 'text')
                 ->add('enabled', 'checkbox', array('required' => false))
                 ->end();
-
-        return $formMapper->getFormBuilder();
     }
 
     public function getBlockEntity(array $data, BlockEntity $block = null)
@@ -47,16 +43,19 @@ class BlockRssConfig extends BlockConfig
         $block->setService($this->getService());
         $block->setParameters(json_encode(array('title' => $data['title'], 'url' => $data['url'])));
         $block->setEnabled((boolean) $data['enabled']);
-        $block->setLang($data['lang']);
+        $block->setLang(isset($data['lang']) ?: '');
         $block->setName($data['name']);
-        $block->setTheme($data['theme']);
+        $block->setTheme(isset($data['theme']) ?: '');
 
         return $block;
     }
 
     public function render(BlockEntity $block)
     {
-        parent::render($block);
+        if ($block->getService() != $this->getService())
+        {
+            throw new \InvalidArgumentException('Block service not supported');
+        }
 
         $parameters = json_decode($block->getParameters());
 

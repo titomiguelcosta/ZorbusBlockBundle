@@ -10,7 +10,14 @@ class BlockController extends CRUDController
 {
     public function createAction()
     {
-        return $this->redirect($this->admin->generateUrl('zorbus_block_models_list'));
+        if ($this->getRequest()->isMethod('get'))
+        {
+            return $this->redirect($this->admin->generateUrl('zorbus_block_models_list'));
+        }
+
+        $data = $this->getRequest()->request->get('form', array());
+
+        return $this->configBlockAction($data['service'], $this->getRequest());
     }
     public function listModelsAction()
     {
@@ -25,7 +32,9 @@ class BlockController extends CRUDController
         }
 
         $config = $this->get($service);
-        $form = $config->getFormBuilder()->getForm();
+        /* @var $form \Symfony\Component\Form\Form */
+        $form = $config->getFormMapper()->add('service', 'hidden')->getFormBuilder()->getForm();
+        $form->setData(array('service' => $config->getService()));
 
         if ($request->isMethod('POST')){
             $form->bind($request);
@@ -102,7 +111,7 @@ class BlockController extends CRUDController
          * Rewrite
          */
         $config = $this->get($object->getService());
-        $form = $config->getFormBuilder()->getForm();
+        $form = $config->getFormMapper()->add('service', 'hidden')->getFormBuilder()->getForm();
 
         $form->setData($object->toArray());
 

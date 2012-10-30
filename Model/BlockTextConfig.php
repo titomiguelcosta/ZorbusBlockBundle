@@ -5,7 +5,6 @@ namespace Zorbus\BlockBundle\Model;
 use Symfony\Component\Validator\Constraints as Assert;
 use Zorbus\BlockBundle\Entity\Block as BlockEntity;
 use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Symfony\Component\Form\FormFactory;
 
@@ -20,10 +19,9 @@ class BlockTextConfig extends BlockConfig
         $this->template = $template;
     }
 
-    public function getFormBuilder()
+    public function getFormMapper()
     {
-        $formMapper = new FormMapper($this->admin->getFormContractor(), $this->formBuilder, $this->admin);
-        $formMapper->add('title', 'text', array('constraints' => array(
+        return $this->formMapper->add('title', 'text', array('constraints' => array(
                         new Assert\NotBlank()
                         )))
                 ->add('content', 'textarea', array(
@@ -35,8 +33,6 @@ class BlockTextConfig extends BlockConfig
                 ->add('theme', 'choice', array('choices' => $this->getThemes()))
                 ->add('name', 'text')
                 ->add('enabled', 'checkbox', array('required' => false));
-
-        return $formMapper->getFormBuilder();
     }
 
     public function getBlockEntity(array $data, BlockEntity $block = null)

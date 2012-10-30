@@ -6,6 +6,7 @@ use Symfony\Component\Form\FormFactory;
 use Zorbus\BlockBundle\Entity\Block as BlockEntity;
 use Sonata\BlockBundle\Model\Block as BlockModel;
 use Sonata\AdminBundle\Admin\AdminInterface;
+use Sonata\AdminBundle\Form\FormMapper;
 
 abstract class BlockConfig
 {
@@ -21,12 +22,13 @@ abstract class BlockConfig
         return $this->getName();
     }
 
-    public function __construct($service, $name = null, AdminInterface $admin = null, FormFactory $formFactory = null)
+    public function __construct($service, $name, AdminInterface $admin, FormFactory $formFactory)
     {
         $this->service = $service;
-        $this->name = $name === null ? $service : $name;
+        $this->name = $name;
         $this->admin = $admin;
-        $this->formBuilder = null !== $formFactory ? $formFactory->createBuilder() : null;
+        $this->formBuilder = $formFactory->createBuilder();
+        $this->formMapper = new FormMapper($this->admin->getFormContractor(), $this->formBuilder, $this->admin);
     }
 
     public function getThemes()
@@ -82,7 +84,7 @@ abstract class BlockConfig
         return $model;
     }
 
-    abstract public function getFormBuilder();
+    abstract public function getFormMapper();
 
     abstract public function getBlockEntity(array $data, BlockEntity $block = null);
 
