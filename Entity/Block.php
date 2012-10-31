@@ -248,4 +248,32 @@ class Block extends Base\Block
     {
         return $this->updated_at;
     }
+    /**
+     * @var integer $cache_ttl
+     */
+    private $cache_ttl;
+
+
+    /**
+     * Set cache_ttl
+     *
+     * @param integer $cacheTtl
+     * @return Block
+     */
+    public function setCacheTtl($cacheTtl)
+    {
+        $this->cache_ttl = $cacheTtl;
+    
+        return $this;
+    }
+
+    /**
+     * Get cache_ttl
+     *
+     * @return integer 
+     */
+    public function getCacheTtl()
+    {
+        return $this->cache_ttl;
+    }
 }

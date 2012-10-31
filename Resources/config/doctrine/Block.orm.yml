@@ -29,6 +29,10 @@ Zorbus\BlockBundle\Entity\Block:
             length: 5
             default: en_US
             nullable: true
+        cache_ttl:
+            type: integer
+            default: 0
+            nullable: true
         enabled:
             type: boolean
             default: true

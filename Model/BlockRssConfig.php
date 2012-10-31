@@ -15,7 +15,7 @@ class BlockRssConfig extends BlockConfig
     {
         parent::__construct('zorbus_block.service.rss', 'RSS Feed Block', $admin, $formFactory);
         $this->enabled = true;
-        $this->themes = array();
+        $this->themes = array('ZorbusBlockBundle:Render:rss_default.html.twig' => 'Default');
         $this->template = $template;
     }
 
@@ -32,7 +32,9 @@ class BlockRssConfig extends BlockConfig
                         )))
                 ->add('lang', 'text', array('required' => false))
                 ->add('name', 'text')
+                ->add('theme', 'choice', array('choices' => $this->getThemes()))
                 ->add('enabled', 'checkbox', array('required' => false))
+                ->add('cache_ttl', 'integer', array('required' => false))
                 ->end();
     }
 
@@ -43,9 +45,10 @@ class BlockRssConfig extends BlockConfig
         $block->setService($this->getService());
         $block->setParameters(json_encode(array('title' => $data['title'], 'url' => $data['url'])));
         $block->setEnabled((boolean) $data['enabled']);
-        $block->setLang(isset($data['lang']) ?: '');
+        $block->setLang($data['lang']);
         $block->setName($data['name']);
-        $block->setTheme(isset($data['theme']) ?: '');
+        $block->setTheme($data['theme']);
+        $block->setCacheTtl($data['cache_ttl']);
 
         return $block;
     }
@@ -88,7 +91,7 @@ class BlockRssConfig extends BlockConfig
             }
         }
 
-        return $this->template->renderResponse('ZorbusBlockBundle:Render:rss.html.twig', array('block' => $block, 'parameters' => $parameters, 'feeds' => $feeds));
+        return $this->template->renderResponse($block->getTheme(), array('block' => $block, 'parameters' => $parameters, 'feeds' => $feeds));
     }
 
 }

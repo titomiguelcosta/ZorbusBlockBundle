@@ -15,7 +15,7 @@ class BlockTextConfig extends BlockConfig
     {
         parent::__construct('zorbus_block.service.text', 'Text Feed Block', $admin, $formFactory);
         $this->enabled = true;
-        $this->themes = array();
+        $this->themes = array('ZorbusBlockBundle:Render:text_default.html.twig' => 'Default', 'ZorbusBlockBundle:Render:text_no_title.html.twig' => 'No title');
         $this->template = $template;
     }
 
@@ -25,6 +25,7 @@ class BlockTextConfig extends BlockConfig
                         new Assert\NotBlank()
                         )))
                 ->add('content', 'textarea', array(
+                    'required' => false,
                     'attr' => array('class' => 'ckeditor'),
                     'constraints' => array(
                         new Assert\NotBlank()
@@ -32,7 +33,9 @@ class BlockTextConfig extends BlockConfig
                 ->add('lang', 'text')
                 ->add('theme', 'choice', array('choices' => $this->getThemes()))
                 ->add('name', 'text')
-                ->add('enabled', 'checkbox', array('required' => false));
+                ->add('enabled', 'checkbox', array('required' => false))
+                ->add('cache_ttl', 'integer', array('required' => false))
+                ;
     }
 
     public function getBlockEntity(array $data, BlockEntity $block = null)
@@ -45,13 +48,9 @@ class BlockTextConfig extends BlockConfig
         $block->setLang($data['lang']);
         $block->setName($data['name']);
         $block->setTheme($data['theme']);
+        $block->setCacheTtl($data['cache_ttl']);
 
         return $block;
-    }
-
-    public function getThemes()
-    {
-        return array('default' => 'Default', 'nice' => 'Beautiful');
     }
 
     public function render(BlockEntity $block)
@@ -62,8 +61,10 @@ class BlockTextConfig extends BlockConfig
         }
 
         $parameters = json_decode($block->getParameters());
+        $title = $parameters->title;
+        $content = $parameters->content;
 
-        return $this->template->renderResponse('ZorbusBlockBundle:Render:text.html.twig', array('block' => $block, 'parameters' => $parameters));
+        return $this->template->renderResponse($block->getTheme(), array('block' => $block, 'title' => $title, 'content' => $content));
     }
 
 }

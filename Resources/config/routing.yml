@@ -1,8 +1,5 @@
-zorbus_block_config:
-    pattern:  /block/config/{type}
-    defaults: { _controller: ZorbusBlockBundle:Default:config }
-zorbus_block_show:
-    pattern:  /block/config/{id}/show
-    defaults: { _controller: ZorbusBlockBundle:Default:show }
+zorbus_block_render:
+    pattern:  /block/{id}/render
+    defaults: { _controller: ZorbusBlockBundle:Default:render }
     requirements:
         id: \d+

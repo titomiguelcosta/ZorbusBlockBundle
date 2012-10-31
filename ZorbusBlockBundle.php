@@ -3,8 +3,8 @@
 namespace Zorbus\BlockBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
-use Zorbus\BlockBundle\DependencyInjection\Compiler\BlockCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Zorbus\BlockBundle\DependencyInjection\Compiler\BlockCompilerPass;
 
 class ZorbusBlockBundle extends Bundle
 {

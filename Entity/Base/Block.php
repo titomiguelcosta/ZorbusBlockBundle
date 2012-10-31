@@ -24,6 +24,7 @@ abstract class Block
         $array['enabled'] = $this->getEnabled();
         $array['theme'] = $this->getTheme();
         $array['lang'] = $this->getLang();
+        $array['cache_ttl'] = $this->getCacheTtl();
 
         foreach (json_decode($this->getParameters()) as $identifier => $value)
         {
