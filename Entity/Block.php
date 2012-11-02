@@ -276,4 +276,32 @@ class Block extends Base\Block
     {
         return $this->cache_ttl;
     }
+    /**
+     * @var string $category
+     */
+    private $category;
+
+
+    /**
+     * Set category
+     *
+     * @param string $category
+     * @return Block
+     */
+    public function setCategory($category)
+    {
+        $this->category = $category;
+    
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return string 
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
 }

@@ -43,6 +43,7 @@ class BlockRssConfig extends BlockConfig
         $block = null === $block ? new BlockEntity() : $block;
 
         $block->setService($this->getService());
+        $block->setCategory('Rss');
         $block->setParameters(json_encode(array('title' => $data['title'], 'url' => $data['url'])));
         $block->setEnabled((boolean) $data['enabled']);
         $block->setLang($data['lang']);

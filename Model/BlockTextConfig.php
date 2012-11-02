@@ -43,6 +43,7 @@ class BlockTextConfig extends BlockConfig
         $block = null === $block ? new BlockEntity() : $block;
 
         $block->setService($this->getService());
+        $block->setCategory('Text');
         $block->setParameters(json_encode(array('title' => $data['title'], 'content' => $data['content'])));
         $block->setEnabled((boolean) $data['enabled']);
         $block->setLang($data['lang']);
