@@ -54,7 +54,7 @@ class BlockTextConfig extends BlockConfig
         return $block;
     }
 
-    public function render(BlockEntity $block, $page = null)
+    public function render(BlockEntity $block, $page = null, $request = null)
     {
         if ($block->getService() != $this->getService())
         {

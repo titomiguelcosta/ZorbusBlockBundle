@@ -88,5 +88,5 @@ abstract class BlockConfig
 
     abstract public function getBlockEntity(array $data, BlockEntity $block = null);
 
-    abstract public function render(BlockEntity $block, $page = null);
+    abstract public function render(BlockEntity $block, $page = null, $request = null);
 }
