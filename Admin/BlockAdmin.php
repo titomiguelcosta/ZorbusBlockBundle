@@ -33,7 +33,7 @@ class BlockAdmin extends Admin
     {
         $listMapper
                 ->addIdentifier('name')
-                ->add('service')
+                ->add('category')
                 ->add('enabled')
         ;
     }
@@ -43,6 +43,7 @@ class BlockAdmin extends Admin
         $filter
                 ->add('name')
                 ->add('title')
+                ->add('category')
                 ->add('service')
                 ->add('parameters')
                 ->add('enabled')

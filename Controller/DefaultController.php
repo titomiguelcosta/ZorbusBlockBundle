@@ -7,15 +7,13 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
-    public function renderAction($id)
+    public function renderAction($block, $page)
     {
-        $block = $this->getDoctrine()->getRepository('ZorbusBlockBundle:Block')->findOneBy(array('id' => $id));
-
         $response = new Response('');
         if ($block)
         {
             $service = $this->get($block->getService());
-            $response = $service->render($block);
+            $response = $service->render($block, $page);
             $response->setTtl($block->getCacheTtl());
         }
 
