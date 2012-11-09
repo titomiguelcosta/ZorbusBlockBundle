@@ -41,6 +41,14 @@ abstract class BlockConfig
         $this->themes[$identifier] = $name;
     }
 
+    public function addThemes(array $themes)
+    {
+        foreach ($themes as $identifier => $name)
+        {
+            $this->setTheme($identifier, $name);
+        }
+    }
+
     public function getService()
     {
         return $this->service;
