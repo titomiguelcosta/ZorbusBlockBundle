@@ -26,6 +26,7 @@ class BlockAdmin extends Admin
     {
         $datagridMapper
                 ->add('name')
+                ->add('category')
         ;
     }
 

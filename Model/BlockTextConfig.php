@@ -4,16 +4,16 @@ namespace Zorbus\BlockBundle\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Zorbus\BlockBundle\Entity\Block as BlockEntity;
-use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Symfony\Component\Form\FormFactory;
 
 class BlockTextConfig extends BlockConfig
 {
 
-    public function __construct(AdminInterface $admin, TimedTwigEngine $template, FormFactory $formFactory)
+    public function __construct(AdminInterface $admin, TwigEngine $template, FormFactory $formFactory)
     {
-        parent::__construct('zorbus_block.service.text', 'Text Feed Block', $admin, $formFactory);
+        parent::__construct('zorbus_block.service.text', 'Text Block', $admin, $formFactory);
         $this->enabled = true;
         $this->themes = array('ZorbusBlockBundle:Render:text_default.html.twig' => 'Default', 'ZorbusBlockBundle:Render:text_no_title.html.twig' => 'No title');
         $this->template = $template;

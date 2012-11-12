@@ -4,14 +4,14 @@ namespace Zorbus\BlockBundle\Model;
 
 use Symfony\Component\Validator\Constraints as Assert;
 use Zorbus\BlockBundle\Entity\Block as BlockEntity;
-use Symfony\Bundle\TwigBundle\Debug\TimedTwigEngine;
+use Symfony\Bundle\TwigBundle\TwigEngine;
 use Sonata\AdminBundle\Admin\AdminInterface;
 use Symfony\Component\Form\FormFactory;
 
 class BlockRssConfig extends BlockConfig
 {
 
-    public function __construct(AdminInterface $admin, TimedTwigEngine $template, FormFactory $formFactory)
+    public function __construct(AdminInterface $admin, TwigEngine $template, FormFactory $formFactory)
     {
         parent::__construct('zorbus_block.service.rss', 'RSS Feed Block', $admin, $formFactory);
         $this->enabled = true;
