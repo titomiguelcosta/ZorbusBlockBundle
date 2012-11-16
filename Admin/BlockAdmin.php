@@ -5,36 +5,27 @@ namespace Zorbus\BlockBundle\Admin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
-use Sonata\AdminBundle\Validator\ErrorElement;
-use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 
 class BlockAdmin extends Admin
 {
-
-    protected function configureFormFields(FormMapper $formMapper)
+    public function configure()
     {
-        $formMapper
-                ->add('name')
-                ->add('parameters')
-                ->add('enabled', null, array('required' => false))
-        ;
     }
-
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
                 ->add('name')
                 ->add('category')
+                ->add('enabled')
         ;
     }
-
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
                 ->addIdentifier('name')
-                ->add('category')
+                ->add('category', 'trans', array('catalogue' => 'ZorbusBlockBundle'))
                 ->add('enabled')
         ;
     }
@@ -44,19 +35,11 @@ class BlockAdmin extends Admin
         $filter
                 ->add('name')
                 ->add('title')
-                ->add('category')
+                ->add('lang')
+                ->add('category', 'trans', array('catalogue' => 'ZorbusBlockBundle'))
                 ->add('service')
                 ->add('parameters')
                 ->add('enabled')
-        ;
-    }
-
-    public function validate(ErrorElement $errorElement, $object)
-    {
-        $errorElement
-                ->with('name')
-                ->assertMaxLength(array('limit' => 255))
-                ->end()
         ;
     }
 

@@ -12,7 +12,7 @@ abstract class Block
 
     public function __toString()
     {
-        return $this->getName();
+        return $this->getCategory().': '.$this->getName();
     }
 
     public function toArray()

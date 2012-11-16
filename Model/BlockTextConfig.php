@@ -21,7 +21,8 @@ class BlockTextConfig extends BlockConfig
 
     public function getFormMapper()
     {
-        return $this->formMapper->add('title', 'text', array('constraints' => array(
+        return $this->formMapper
+                ->add('title', 'text', array('constraints' => array(
                         new Assert\NotBlank()
                         )))
                 ->add('content', 'textarea', array(
@@ -30,11 +31,26 @@ class BlockTextConfig extends BlockConfig
                     'constraints' => array(
                         new Assert\NotBlank()
                         )))
-                ->add('lang', 'text')
-                ->add('theme', 'choice', array('choices' => $this->getThemes()))
-                ->add('name', 'text')
+                ->add('name', 'text', array(
+                    'required' => true,
+                    'constraints' => array(
+                        new Assert\NotBlank()
+                    )
+                ))
+                ->add('lang', 'language', array('preferred_choices' => array('pt_PT', 'en')))
+                ->add('theme', 'choice', array(
+                    'choices' => $this->getThemes(),
+                    'attr' => array('class' => 'span5 select2'),
+                    'constraints' => array(
+                        new Assert\NotBlank()
+                    )
+                ))
+                ->add('cache_ttl', 'integer', array(
+                    'required' => false,
+                    'attr' => array('class' => 'span2'),
+                    'constraints' => new Assert\Min(array('limit' => 0))
+                ))
                 ->add('enabled', 'checkbox', array('required' => false))
-                ->add('cache_ttl', 'integer', array('required' => false))
                 ;
     }
 

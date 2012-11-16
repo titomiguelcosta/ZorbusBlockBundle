@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+            <trans-unit id="1">
+                <source>Articles</source>
+                <target>Artigos</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Gallery</source>
+                <target>Galeria</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Link</source>
+                <target>Ligações</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>Text</source>
+                <target>Texto</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Block List</source>
+                <target>Listar blocos</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>Block Show</source>
+                <target>Mostrar Bloco</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Name</source>
+                <target>Nome</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Category</source>
+                <target>Categoria</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Enabled</source>
+                <target>Ativo</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Add new</source>
+                <target>Adicionar novo</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Documents</source>
+                <target>Documentos</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Galleries</source>
+                <target>Galerias</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>Glossaries</source>
+                <target>Glossários</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Links</source>
+                <target>Ligações</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Poll</source>
+                <target>Inquéritos</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>Article Block</source>
+                <target>Bloco de artigo</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>Category Block</source>
+                <target>Bloco de categoria</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>Banner Block</source>
+                <target>Bloco de banner</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>Document Block</source>
+                <target>Bloco de documento</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Tag Block</source>
+                <target>Bloco de etiqueta</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>FAQ Block</source>
+                <target>Bloco de FAQ</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Gallery Block</source>
+                <target>Bloco de galeria</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Glossary Block</source>
+                <target>Bloco de glossário</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Link Block</source>
+                <target>Bloco de ligação</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Categories Block</source>
+                <target>Bloco de múltiplas categorias</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Menu Block</source>
+                <target>Bloco de menu</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Poll Block</source>
+                <target>Bloco de inquérito</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Text Block</source>
+                <target>Bloco de texto</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>RSS Feed Block</source>
+                <target>Bloco de RSS Feed</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Lang</source>
+                <target>Língua</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Theme</source>
+                <target>Tema</target>
+            </trans-unit>
+            <trans-unit id="32">
+                <source>Article</source>
+                <target>Artigo</target>
+            </trans-unit>
+            <trans-unit id="33">
+                <source>Glossary</source>
+                <target>Glossário</target>
+            </trans-unit>
+            <trans-unit id="34">
+                <source>Title</source>
+                <target>Título</target>
+            </trans-unit>
+            <trans-unit id="35">
+                <source>Content</source>
+                <target>Conteúdo</target>
+            </trans-unit>
+            <trans-unit id="36">
+                <source>Preview</source>
+                <target>Pré-visualizar</target>
+            </trans-unit>
+            <trans-unit id="37">
+                <source>Blocks</source>
+                <target>Blocos</target>
+            </trans-unit>
+            <trans-unit id="38">
+                <source>Parameters</source>
+                <target>Parâmetros</target>
+            </trans-unit>
+            <trans-unit id="39">
+                <source>Service</source>
+                <target>Serviço</target>
+            </trans-unit>
+            <trans-unit id="40">
+                <source>Block History</source>
+                <target>Histórico</target>
+            </trans-unit>
+            <trans-unit id="41">
+                <source></source>
+                <target></target>
+            </trans-unit>
+            <trans-unit id="">
+                <source></source>
+                <target></target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

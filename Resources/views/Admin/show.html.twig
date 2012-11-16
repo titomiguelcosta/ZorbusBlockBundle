@@ -18,7 +18,7 @@
     {{ parent() }}
 
     <hr>
-    <h2>Preview</h2>
+    <h2>{{ 'Preview' | trans({}, 'ZorbusBlockBundle') }}</h2>
     <hr>
     {{ output | raw }}
 {% endblock %}

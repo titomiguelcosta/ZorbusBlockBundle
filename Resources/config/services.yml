@@ -15,7 +15,7 @@ services:
         class: %zorbus_block.block.admin.class%
         arguments: [~, %zorbus_block.block.entity.class%, %zorbus_block.block.controller.class%]
         calls:
-            - [setTranslationDomain, [BlockBundle]]
+            - [setTranslationDomain, [ZorbusBlockBundle]]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Pages, label: Blocks }
     zorbus_block.compiler.config:

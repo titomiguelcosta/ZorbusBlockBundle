@@ -22,20 +22,35 @@ class BlockRssConfig extends BlockConfig
     public function getFormMapper()
     {
         return $this->formMapper
-                ->with('Rss Feed Block')
-                ->add('title', 'text', array('constraints' => array(
-                        new Assert\NotBlank()
-                        )))
-                ->add('url', 'text', array('constraints' => array(
-                        new Assert\NotBlank(),
-                        new Assert\Url()
-                        )))
-                ->add('lang', 'text', array('required' => false))
-                ->add('name', 'text')
-                ->add('theme', 'choice', array('choices' => $this->getThemes()))
-                ->add('enabled', 'checkbox', array('required' => false))
-                ->add('cache_ttl', 'integer', array('required' => false))
-                ->end();
+                        ->with('Rss Feed Block')
+                            ->add('title', 'text', array('constraints' => array(
+                                    new Assert\NotBlank()
+                                    )))
+                            ->add('url', 'text', array('constraints' => array(
+                                    new Assert\NotBlank(),
+                                    new Assert\Url()
+                                    )))
+                            ->add('name', 'text', array(
+                                'required' => true,
+                                'constraints' => array(
+                                    new Assert\NotBlank()
+                                )
+                            ))
+                            ->add('lang', 'language', array('preferred_choices' => array('pt_PT', 'en')))
+                            ->add('theme', 'choice', array(
+                                'choices' => $this->getThemes(),
+                                'attr' => array('class' => 'span5 select2'),
+                                'constraints' => array(
+                                    new Assert\NotBlank()
+                                )
+                            ))
+                            ->add('cache_ttl', 'integer', array(
+                                'required' => false,
+                                'attr' => array('class' => 'span2'),
+                                'constraints' => new Assert\Min(array('limit' => 0))
+                            ))
+                            ->add('enabled', 'checkbox', array('required' => false))
+                        ->end();
     }
 
     public function getBlockEntity(array $data, BlockEntity $block = null)

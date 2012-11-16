@@ -5,10 +5,10 @@
         <span></span>
         {% for category, blocks in models %}
         <fieldset>
-            <legend>{{ category }}</legend>
+            <legend>{{ category | trans({}, 'ZorbusBlockBundle') }}</legend>
             <br />
             {% for model in blocks %}
-                <span class="span2 well"><a href="{{ admin.generateUrl('zorbus_block_config', {'service': model.service}) }}">{{ model }}</a></span>
+                <span class="span2 well"><a href="{{ admin.generateUrl('zorbus_block_config', {'service': model.service}) }}">{{ model | trans({}, 'ZorbusBlockBundle') }}</a></span>
             {% endfor %}
         </fieldset>
 
