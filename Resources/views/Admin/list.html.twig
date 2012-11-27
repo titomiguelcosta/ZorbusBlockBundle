@@ -3,7 +3,7 @@
 {% block actions %}
     <div class="sonata-actions">
         <div class="btn-group">
-            <a class="btn" href="{{ admin.generateUrl('zorbus_block_models_list') }}">{{ 'Add new' | trans({}, 'SonataAdminBundle')}}</a>
+            <a class="btn btn-success" href="{{ admin.generateUrl('zorbus_block_models_list') }}"><i class="icon-plus icon-white"></i> {{ 'link_action_create' | trans({}, 'SonataAdminBundle')}}</a>
         </div>
     </div>
 {% endblock %}
