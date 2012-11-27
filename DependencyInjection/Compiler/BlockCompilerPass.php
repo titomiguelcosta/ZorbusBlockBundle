@@ -32,6 +32,9 @@ class BlockCompilerPass implements CompilerPassInterface
                 $definition->addMethodCall(
                         'addModel', array(new Reference($id), $category)
                 );
+                $definition->addMethodCall(
+                        'addCategory', array($category)
+                );
             }
         }
     }

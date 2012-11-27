@@ -7,6 +7,8 @@ parameters:
 
     zorbus_block.block.controller.class: ZorbusBlockBundle:Admin\Block
 
+    zorbus_block.block_categories.class: Zorbus\BlockBundle\Form\Type\BlockCategoryType
+
     zorbus_block.service.text.class: Zorbus\BlockBundle\Model\BlockTextConfig
     zorbus_block.service.rss.class: Zorbus\BlockBundle\Model\BlockRssConfig
 
@@ -21,6 +23,12 @@ services:
     zorbus_block.compiler.config:
         class: %zorbus_block.compiler.config.class%
         scope: prototype
+    zorbus_block.block_categories:
+        class: %zorbus_block.block_categories.class%
+        scope: prototype
+        arguments: ['@zorbus_block.compiler.config']
+        tags:
+            - { name: form.type, alias: block_categories }
     zorbus_block.service.text:
         class: %zorbus_block.service.text.class%
         scope: prototype
