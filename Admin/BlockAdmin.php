@@ -17,7 +17,7 @@ class BlockAdmin extends Admin
     {
         $datagridMapper
                 ->add('name')
-                ->add('category', null, array(), 'block_category')
+                ->add('category', null, array(), 'block_categories')
                 ->add('enabled')
         ;
     }

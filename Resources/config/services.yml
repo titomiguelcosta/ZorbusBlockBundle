@@ -26,7 +26,7 @@ services:
     zorbus_block.block_categories:
         class: %zorbus_block.block_categories.class%
         scope: prototype
-        arguments: ['@zorbus_block.compiler.config']
+        arguments: ['@zorbus_block.compiler.config', '@translator']
         tags:
             - { name: form.type, alias: block_categories }
     zorbus_block.service.text:

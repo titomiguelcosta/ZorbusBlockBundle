@@ -166,6 +166,34 @@
                 <source>Block Edit</source>
                 <target>Editar bloco</target>
             </trans-unit>
+            <trans-unit id="42">
+                <source>Document</source>
+                <target>Documento</target>
+            </trans-unit>
+            <trans-unit id="43">
+                <source>Faq</source>
+                <target>FAQ</target>
+            </trans-unit>
+            <trans-unit id="44">
+                <source>Gallery</source>
+                <target>Galeria</target>
+            </trans-unit>
+            <trans-unit id="45">
+                <source>Glossary</source>
+                <target>Glossário</target>
+            </trans-unit>
+            <trans-unit id="46">
+                <source>Link</source>
+                <target>Ligação</target>
+            </trans-unit>
+            <trans-unit id="47">
+                <source>Menu</source>
+                <target>Menu</target>
+            </trans-unit>
+            <trans-unit id="48">
+                <source>Poll</source>
+                <target>Inquérito</target>
+            </trans-unit>
             <trans-unit id="">
                 <source></source>
                 <target></target>
