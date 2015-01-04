@@ -3,7 +3,7 @@
     "type": "symfony-bundle",
     "description": "A Symfony2 Block bundle",
     "keywords": ["doctrine", "orm", "bundle", "Symfony2", "block", "sonata"],
-    "homepage": "https://github.com/Zorbus",
+    "homepage": "https://github.com/TitoMiguelCosta",
     "license": "MIT",
     "authors": [
         {
@@ -15,16 +15,19 @@
     "minimum-stability": "dev",
     "require": {
         "php": ">=5.3.2",
-        "symfony/framework-bundle": ">=2.1,<2.5-dev",
-        "stof/doctrine-extensions-bundle": "*",
-        "doctrine/doctrine-bundle": "*",
-        "sonata-project/block-bundle": "*",
+        "symfony/framework-bundle": "~2.3",
+        "stof/doctrine-extensions-bundle": "~1.1",
+        "doctrine/doctrine-bundle": "~1.2",
+        "sonata-project/block-bundle": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7",
         "sonata-project/admin-bundle": "*"
     },
     "suggest": {
         "twig/twig": "Great template language",
         "doctrine/doctrine-fixtures-bundle": "To load fixtures data",
-        "doctrine/doctrine-migrations-bundle": "To alter database schema in a secure way"
+        "doctrine/doctrine-migrations-bundle": "To alter database schema in a safe way"
     },
     "autoload": {
         "psr-0": { "Zorbus\\BlockBundle": "" }
