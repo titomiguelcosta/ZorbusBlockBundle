@@ -3,11 +3,12 @@
 namespace Zorbus\BlockBundle\Entity\Base;
 
 use Doctrine\ORM\Mapping as ORM;
+use Zorbus\BlockBundle\Model\BlockInterface;
 
 /**
  * Zorbus\BlockBundle\Entity\Block
  */
-abstract class Block
+abstract class Block implements BlockInterface
 {
 
     public function __toString()
