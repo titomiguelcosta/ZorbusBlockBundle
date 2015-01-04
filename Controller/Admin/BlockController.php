@@ -10,14 +10,15 @@ class BlockController extends CRUDController
 {
     public function createAction()
     {
-        if ($this->getRequest()->isMethod('get'))
+        $request = $this->get('request_stack')->getMasterRequest();
+        if ($request->isMethod('get'))
         {
             return $this->redirect($this->admin->generateUrl('zorbus_block_models_list'));
         }
 
-        $data = $this->getRequest()->request->get('form', array());
+        $data = $request->request->get('form', array());
 
-        return $this->configBlockAction($data['service'], $this->getRequest());
+        return $this->configBlockAction($data['service'], $request);
     }
     public function listModelsAction()
     {
@@ -37,7 +38,7 @@ class BlockController extends CRUDController
         $form->setData(array('service' => $config->getService()));
 
         if ($request->isMethod('POST')){
-            $form->bind($request);
+            $form->handleRequest($request);
 
             if ($form->isValid())
             {
@@ -62,7 +63,9 @@ class BlockController extends CRUDController
     }
     public function showAction($id = null)
     {
-        $id = $this->get('request')->get($this->admin->getIdParameter());
+        $request = $this->get('request_stack')->getMasterRequest();
+
+        $id = $request->get($this->admin->getIdParameter());
 
         $object = $this->admin->getObject($id);
 
@@ -88,6 +91,8 @@ class BlockController extends CRUDController
     }
     public function editAction($id = null)
     {
+        $request = $this->get('request_stack')->getMasterRequest();
+
         // the key used to lookup the template
         $templateKey = 'edit';
 
@@ -115,8 +120,8 @@ class BlockController extends CRUDController
 
         $form->setData($object->toArray());
 
-        if ($this->get('request')->getMethod() == 'POST') {
-            $form->bindRequest($this->get('request'));
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
 
             $isFormValid = $form->isValid();
 
@@ -126,7 +131,7 @@ class BlockController extends CRUDController
                 $object = $config->getBlockEntity($form->getData(), $object);
                 $this->admin->update($object);
 
-                $this->get('session')->setFlash('sonata_flash_success', 'flash_edit_success');
+                $this->get('session')->getFlashBag()->add('sonata_flash_success', 'flash_edit_success');
 
                 if ($this->isXmlHttpRequest()) {
                     return $this->renderJson(array(
@@ -141,7 +146,7 @@ class BlockController extends CRUDController
 
             // show an error message if the form failed validation
             if (!$isFormValid) {
-                $this->get('session')->setFlash('sonata_flash_error', 'flash_edit_error');
+                $this->get('session')->getFlashBag()->add('sonata_flash_error', 'flash_edit_error');
             } elseif ($this->isPreviewRequested()) {
                 // enable the preview template if the form was valid and preview was requested
                 $templateKey = 'preview';

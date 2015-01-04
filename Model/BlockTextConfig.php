@@ -48,7 +48,7 @@ class BlockTextConfig extends BlockConfig
                 ->add('cache_ttl', 'integer', array(
                     'required' => false,
                     'attr' => array('class' => 'span2'),
-                    'constraints' => new Assert\Min(array('limit' => 0))
+                    'constraints' => new Assert\Length(array('min' => 0))
                 ))
                 ->add('enabled', 'checkbox', array('required' => false))
                 ;

@@ -1,7 +1,5 @@
 Zorbus\BlockBundle\Entity\Block:
-    type: entity
-    table: zorbus_block_block
-    repositoryClass: Zorbus\BlockBundle\Entity\BlockRepository
+    type: mappedSuperclass
     id:
         id:
             type: integer
