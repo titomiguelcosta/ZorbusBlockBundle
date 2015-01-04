@@ -10,7 +10,6 @@ use Symfony\Component\Form\FormFactory;
 
 class BlockTextConfig extends BlockConfig
 {
-
     public function __construct(AdminInterface $admin, TwigEngine $template, FormFactory $formFactory)
     {
         parent::__construct('zorbus_block.service.text', 'Text Block', $admin, $formFactory);
@@ -23,32 +22,32 @@ class BlockTextConfig extends BlockConfig
     {
         return $this->formMapper
                 ->add('title', 'text', array('constraints' => array(
-                        new Assert\NotBlank()
+                        new Assert\NotBlank(),
                         )))
                 ->add('content', 'textarea', array(
                     'required' => false,
                     'attr' => array('class' => 'ckeditor'),
                     'constraints' => array(
-                        new Assert\NotBlank()
-                        )))
+                        new Assert\NotBlank(),
+                        ), ))
                 ->add('name', 'text', array(
                     'required' => true,
                     'constraints' => array(
-                        new Assert\NotBlank()
-                    )
+                        new Assert\NotBlank(),
+                    ),
                 ))
                 ->add('lang', 'language', array('preferred_choices' => array('pt_PT', 'en')))
                 ->add('theme', 'choice', array(
                     'choices' => $this->getThemes(),
                     'attr' => array('class' => 'span5 select2'),
                     'constraints' => array(
-                        new Assert\NotBlank()
-                    )
+                        new Assert\NotBlank(),
+                    ),
                 ))
                 ->add('cache_ttl', 'integer', array(
                     'required' => false,
                     'attr' => array('class' => 'span2'),
-                    'constraints' => new Assert\Length(array('min' => 0))
+                    'constraints' => new Assert\Length(array('min' => 0)),
                 ))
                 ->add('enabled', 'checkbox', array('required' => false))
                 ;
@@ -72,8 +71,7 @@ class BlockTextConfig extends BlockConfig
 
     public function render(BlockEntity $block, $page = null, $request = null)
     {
-        if ($block->getService() != $this->getService())
-        {
+        if ($block->getService() != $this->getService()) {
             throw new \InvalidArgumentException('Block service not supported');
         }
 
@@ -83,5 +81,4 @@ class BlockTextConfig extends BlockConfig
 
         return $this->template->renderResponse($block->getTheme(), array('block' => $block, 'title' => $title, 'content' => $content));
     }
-
 }

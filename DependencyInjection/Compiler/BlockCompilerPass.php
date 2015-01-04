@@ -8,11 +8,9 @@ use Symfony\Component\DependencyInjection\Reference;
 
 class BlockCompilerPass implements CompilerPassInterface
 {
-
     public function process(ContainerBuilder $container)
     {
-        if (!$container->hasDefinition('zorbus_block.compiler.config'))
-        {
+        if (!$container->hasDefinition('zorbus_block.compiler.config')) {
             return;
         }
 
@@ -23,10 +21,8 @@ class BlockCompilerPass implements CompilerPassInterface
         $taggedServices = $container->findTaggedServiceIds(
                 'zorbus_block.block'
         );
-        foreach ($taggedServices as $id => $attributes)
-        {
-            foreach ($attributes as $attribute)
-            {
+        foreach ($taggedServices as $id => $attributes) {
+            foreach ($attributes as $attribute) {
                 $category = array_key_exists('category', $attribute) ? $attribute['category'] : 'Categories';
 
                 $definition->addMethodCall(
@@ -38,5 +34,4 @@ class BlockCompilerPass implements CompilerPassInterface
             }
         }
     }
-
 }

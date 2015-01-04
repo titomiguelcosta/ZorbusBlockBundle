@@ -9,7 +9,6 @@ use Symfony\Component\Translation\TranslatorInterface;
 
 class BlockCategoryType extends AbstractType
 {
-
     protected $categories, $translator;
 
     public function __construct(BlockCompilerConfig $config, TranslatorInterface $translator)
@@ -22,13 +21,12 @@ class BlockCategoryType extends AbstractType
     {
         $categories = array();
 
-        foreach ($this->categories as $category)
-        {
+        foreach ($this->categories as $category) {
             $categories[$category] = $this->translator->trans($category, array(), 'ZorbusBlockBundle');
         }
-        
+
         $resolver->setDefaults(array(
-            'choices' => $categories
+            'choices' => $categories,
         ));
     }
 
@@ -41,5 +39,4 @@ class BlockCategoryType extends AbstractType
     {
         return 'block_categories';
     }
-
 }

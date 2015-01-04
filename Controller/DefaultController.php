@@ -10,8 +10,7 @@ class DefaultController extends Controller
     public function renderAction($block, $page = null, $request = null)
     {
         $response = new Response('');
-        if ($block)
-        {
+        if ($block) {
             $service = $this->get($block->getService());
             $response = $service->render($block, $page, $request);
             $response->setTtl($block->getCacheTtl());

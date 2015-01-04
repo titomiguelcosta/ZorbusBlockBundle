@@ -10,7 +10,6 @@ use Sonata\AdminBundle\Form\FormMapper;
 
 abstract class BlockConfig
 {
-
     protected $enabled = true;
     protected $service;
     protected $name = null;
@@ -43,8 +42,7 @@ abstract class BlockConfig
 
     public function addThemes(array $themes)
     {
-        foreach ($themes as $identifier => $name)
-        {
+        foreach ($themes as $identifier => $name) {
             $this->setTheme($identifier, $name);
         }
     }

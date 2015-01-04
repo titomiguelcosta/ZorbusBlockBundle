@@ -11,8 +11,7 @@ class BlockController extends CRUDController
     public function createAction()
     {
         $request = $this->get('request_stack')->getMasterRequest();
-        if ($request->isMethod('get'))
-        {
+        if ($request->isMethod('get')) {
             return $this->redirect($this->admin->generateUrl('zorbus_block_models_list'));
         }
 
@@ -37,11 +36,10 @@ class BlockController extends CRUDController
         $form = $config->getFormMapper()->add('service', 'hidden')->getFormBuilder()->getForm();
         $form->setData(array('service' => $config->getService()));
 
-        if ($request->isMethod('POST')){
+        if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
-            if ($form->isValid())
-            {
+            if ($form->isValid()) {
                 $block = $config->getBlockEntity($form->getData());
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($block);
@@ -86,7 +84,7 @@ class BlockController extends CRUDController
             'action'   => 'show',
             'object'   => $object,
             'elements' => $this->admin->getShow(),
-            'output'   => $output->getContent()
+            'output'   => $output->getContent(),
         ));
     }
     public function editAction($id = null)
@@ -136,7 +134,7 @@ class BlockController extends CRUDController
                 if ($this->isXmlHttpRequest()) {
                     return $this->renderJson(array(
                         'result'    => 'ok',
-                        'objectId'  => $this->admin->getNormalizedIdentifier($object)
+                        'objectId'  => $this->admin->getNormalizedIdentifier($object),
                     ));
                 }
 
@@ -186,7 +184,7 @@ class BlockController extends CRUDController
         return $this->render('ZorbusBlockBundle:Admin:list.html.twig', array(
             'action'   => 'list',
             'form'     => $formView,
-            'datagrid' => $datagrid
+            'datagrid' => $datagrid,
         ));
     }
 }

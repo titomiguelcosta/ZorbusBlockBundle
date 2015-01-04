@@ -6,7 +6,6 @@ use Zorbus\BlockBundle\Model\BlockConfig;
 
 class BlockCompilerConfig
 {
-
     protected $models = array();
     protected $categories = array();
 
@@ -23,13 +22,14 @@ class BlockCompilerConfig
     public function getModels()
     {
         ksort($this->models);
+
         return $this->models;
     }
 
     public function getCategories()
     {
         ksort($this->categories);
+
         return $this->categories;
     }
-
 }

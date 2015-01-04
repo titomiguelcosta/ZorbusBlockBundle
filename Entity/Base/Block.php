@@ -2,7 +2,6 @@
 
 namespace Zorbus\BlockBundle\Entity\Base;
 
-use Doctrine\ORM\Mapping as ORM;
 use Zorbus\BlockBundle\Model\BlockInterface;
 
 /**
@@ -10,7 +9,6 @@ use Zorbus\BlockBundle\Model\BlockInterface;
  */
 abstract class Block implements BlockInterface
 {
-
     public function __toString()
     {
         return $this->getName();
@@ -27,12 +25,10 @@ abstract class Block implements BlockInterface
         $array['lang'] = $this->getLang();
         $array['cache_ttl'] = $this->getCacheTtl();
 
-        foreach (json_decode($this->getParameters()) as $identifier => $value)
-        {
+        foreach (json_decode($this->getParameters()) as $identifier => $value) {
             $array[$identifier] = $value;
         }
 
         return $array;
     }
-
 }

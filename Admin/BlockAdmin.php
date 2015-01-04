@@ -49,5 +49,4 @@ class BlockAdmin extends Admin
         $collection->add('zorbus_block_show', 'config/{id}/show', array('_controller' => 'ZorbusBlockBundle:Admin\Block:showBlock'));
         $collection->add('zorbus_block_models_list', 'models/list', array('_controller' => 'ZorbusBlockBundle:Admin\Block:listModels'));
     }
-
 }

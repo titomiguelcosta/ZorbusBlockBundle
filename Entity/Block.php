@@ -2,7 +2,6 @@
 
 namespace Zorbus\BlockBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Zorbus\BlockBundle\Entity\Block
@@ -54,7 +53,6 @@ class Block extends Base\Block
      */
     private $updated_at;
 
-
     /**
      * Get id
      *
@@ -68,7 +66,7 @@ class Block extends Base\Block
     /**
      * Set name
      *
-     * @param string $name
+     * @param  string $name
      * @return Block
      */
     public function setName($name)
@@ -91,7 +89,7 @@ class Block extends Base\Block
     /**
      * Set type
      *
-     * @param string $type
+     * @param  string $type
      * @return Block
      */
     public function setService($service)
@@ -114,7 +112,7 @@ class Block extends Base\Block
     /**
      * Set parameters
      *
-     * @param string $parameters
+     * @param  string $parameters
      * @return Block
      */
     public function setParameters($parameters)
@@ -137,7 +135,7 @@ class Block extends Base\Block
     /**
      * Set theme
      *
-     * @param string $theme
+     * @param  string $theme
      * @return Block
      */
     public function setTheme($theme)
@@ -160,7 +158,7 @@ class Block extends Base\Block
     /**
      * Set lang
      *
-     * @param string $lang
+     * @param  string $lang
      * @return Block
      */
     public function setLang($lang)
@@ -183,7 +181,7 @@ class Block extends Base\Block
     /**
      * Set enabled
      *
-     * @param boolean $enabled
+     * @param  boolean $enabled
      * @return Block
      */
     public function setEnabled($enabled)
@@ -206,7 +204,7 @@ class Block extends Base\Block
     /**
      * Set created_at
      *
-     * @param \DateTime $createdAt
+     * @param  \DateTime $createdAt
      * @return Block
      */
     public function setCreatedAt($createdAt)
@@ -229,7 +227,7 @@ class Block extends Base\Block
     /**
      * Set updated_at
      *
-     * @param \DateTime $updatedAt
+     * @param  \DateTime $updatedAt
      * @return Block
      */
     public function setUpdatedAt($updatedAt)
@@ -253,24 +251,23 @@ class Block extends Base\Block
      */
     private $cache_ttl;
 
-
     /**
      * Set cache_ttl
      *
-     * @param integer $cacheTtl
+     * @param  integer $cacheTtl
      * @return Block
      */
     public function setCacheTtl($cacheTtl)
     {
         $this->cache_ttl = $cacheTtl;
-    
+
         return $this;
     }
 
     /**
      * Get cache_ttl
      *
-     * @return integer 
+     * @return integer
      */
     public function getCacheTtl()
     {
@@ -281,24 +278,23 @@ class Block extends Base\Block
      */
     private $category;
 
-
     /**
      * Set category
      *
-     * @param string $category
+     * @param  string $category
      * @return Block
      */
     public function setCategory($category)
     {
         $this->category = $category;
-    
+
         return $this;
     }
 
     /**
      * Get category
      *
-     * @return string 
+     * @return string
      */
     public function getCategory()
     {
